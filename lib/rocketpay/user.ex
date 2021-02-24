@@ -6,7 +6,7 @@ defmodule Rocketpay.User do
 
   @primary_key {:id, :binary_id, autogenerate: true}
 
-  @required_params [:name, :age, :email, :password_hash, :nickname]
+  @required_params [:name, :age, :email, :password, :nickname]
 
   schema "users" do
     field :name, :string
@@ -31,7 +31,7 @@ defmodule Rocketpay.User do
     |> put_password_hash()
   end
 
-  defp put_password_hash(%Changeset{valid?: true, changes: %{password: password = changeset}}) do
+  defp put_password_hash(%Changeset{valid?: true, changes: %{password: password}} = changeset) do
     change(changeset, Bcrypt.add_hash(password))
   end
 
