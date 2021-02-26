@@ -22,7 +22,7 @@ defmodule Rocketpay.Accounts.Transaction do
         {:error, reason}
 
       {:ok, %{deposit: origin_account, withdraw: destination_account}} ->
-        {:ok, %{origin_account: origin_account, withdraw: destination_account}}
+        {:ok, %{origin_account: origin_account, destination_account: destination_account}}
     end
   end
 end
